@@ -98,7 +98,6 @@ notebook==5.0.0
 numexpr==2.6.2
 numpy==1.16.0
 numpydoc==0.7.0
-odo==0.5.1
 olefile==0.44
 openpyxl==2.4.8
 packaging==16.8
