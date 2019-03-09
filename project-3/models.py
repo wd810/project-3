@@ -40,12 +40,13 @@ class Shape(BaseModel, db.Model):
     id = db.Column(db.Integer)
 
 class TypeAvg(BaseModel, db.Model):
-    __tablename__ = 'type_avg'
+    __tablename__ = 'type_avg_final'
     type = db.Column(db.String(120), primary_key=True)
     number = db.Column(db.Integer)
     height = db.Column(db.Float)
     weight = db.Column(db.Float)
     dens = db.Column(db.Float)
+    experience = db.Column(db.Float)
 
 class EvolveType(BaseModel, db.Model):
     __tablename__ = 'evol_type'

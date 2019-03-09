@@ -3732,7 +3732,7 @@ body.is-loading #banner:before {
 }
 
 .post_section .dark {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.7);
     padding: 6em 0;
 }
 
@@ -4073,6 +4073,7 @@ body.is-loading #banner:before {
 
 .axis text {
     fill: #fff;
+    font-size: 1.1em;
 }
 
 .axis path,
@@ -4088,6 +4089,34 @@ body.is-loading #banner:before {
 
 .bar:hover {
     fill: #c62828;
+}
+
+.btn-group button.active-btn {
+    background-color: #c62828;
+    cursor: default;
+}
+
+.active {
+    fill: white;
+    font-weight: bold;
+    transition: fill 0.3s ease-out;
+    cursor: default;
+}
+
+.inactive {
+    fill: white;
+    transition: fill 0.3s ease-out;
+    cursor: pointer;
+}
+
+.type-disc {
+    height: 1.2em;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: space-around;
+    margin: .1em 0 .2em 0;
 }
 
 
@@ -4109,6 +4138,10 @@ body.is-loading #banner:before {
 
 .circle-3stg:hover {
     fill: darkorange;
+}
+
+.hover:hover {
+    stroke: white;
 }
 
 
