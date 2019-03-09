@@ -7,9 +7,10 @@
 <html>
 
 <head>
-    <title>Generic - Road Trip by TEMPLATED</title>
+    <title>Shape - Pokémon Big Data</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylecheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
 </head>
 
@@ -17,7 +18,7 @@
 
     <!-- Header -->
     <header id="header" class="alt">
-        <div class="logo"><a href="/">Road Trip <span>by TEMPLATED</span></a></div>
+        <div class="logo"><a href="/">Pokémon Big Data <span> Shape</span></a></div>
         <a href="#menu"><span>Menu</span></a>
     </header>
 
@@ -25,8 +26,8 @@
     <nav id="menu">
         <ul class="links">
             <li><a href="/">Home</a></li>
-            <li><a href="generic">Generic</a></li>
-            <li><a href="elements">Elements</a></li>
+            <li><a href="/shape">Pokémon Shape</a></li>
+            <li><a href="/evolution">Pokémon Evolution</a></li>
         </ul>
     </nav>
 
@@ -47,12 +48,14 @@
                         dictumst per a a potenti interdum fusce a adipiscing nostra ac parturient. Proin a imperdiet at a scelerisque quam et at ante aenean per per faucibus senectus lobortis mi tincidunt a penatibus. Mauris vestibulum aliquet parturient
                         odio dapibus euismod a mi ullamcorper maecenas turpis non scelerisque nibh fermentum natoque erat parturient suspendisse a magna curabitur cum.</p>
                 </div>
-                <footer>
+                <!--
+                    <footer>
                     <ul class="actions">
                         <li><a href="#" class="button alt icon fa-chevron-left"><span class="label">Previous</span></a></li>
                         <li><a href="#" class="button alt icon fa-chevron-right"><span class="label">Next</span></a></li>
                     </ul>
                 </footer>
+                -->
             </article>
         </div>
     </section>
@@ -61,29 +64,48 @@
         <div class="dark">
             <div class="inner">
                 <h2>Pokémon Types</h2>
+                <p>There are <strong>18</strong> types of Pokémon in Pokémon big data. Click the buttons below graph to view more detail data of each type.</p>
                 <div id='svg_number'></div>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button id='number' type="button" class="btn btn-info active-btn">Number</button>
+                    <button id='height' type="button" class="btn btn-info">Average Height</button>
+                    <button id='weight' type="button" class="btn btn-info">Average Weight</button>
+                    <button id='dens' type="button" class="btn btn-info">Weight VS Height</button>
+                    <button id='experience' type="button" class="btn btn-info">Average Base Experience</button>
+                </div>
+                <div class='type-disc'>
+                    <p id='number'><strong>[flying]</strong> is the first type of Pokémon in Pokémon world, which has <strong>123</strong> in this type, and it is also the only one type that has over 100 Pokémon.</p>
+                    <p id='height'>Obviously, <strong>[dragon]</strong> is the heighest Pokémon in average.</p>
+                    <p id='weight'>The weight difference between type is larger than height, and <strong>[dragon]</strong> wins again in average weight comparison.</p>
+                    <p id='dens'>Although [dragon] is the biggest Pokémon in average, <strong>[psychic] is the heaviest per centimetre</strong>. So, a [psychic] Pokémon may look small, but is much heavier than you expect, and never try to hold a [psychic] Pokémon
+                        like holding a [Pikachu].</p>
+                    <p id='experience'><strong>[dangon]</strong> gains most base experience in all the types, however, the advantages are not as outstanding as in the comparison of <strong>[Average Height]</strong> and <strong>[Average Weight]</strong>.</p>
+                </div>
             </div>
         </div>
     </section>
     <!-- pokemon type END! -->
+    <section id="color" class="wrapper bg-img post_section" data-bg="../static/img/pokemon-bg-8.jpg">
+        <div class="dark">
+            <div class="inner">
+                <h2>Pokémon Shape - Weight VS Height</h2>
+                <p>Scatter graph has a better view of displaying Pokémon's height and weight in average by type.</p>
+                <div id='svg_shape'></div>
+            </div>
+        </div>
+    </section>
+    <!-- pokemon shape END! -->
     <section id="color" class="wrapper bg-img post_section" data-bg="../static/img/pokemon-bg-2.jpg">
         <div class="dark">
             <div class="inner">
                 <h2>Pokémon Color</h2>
+                <p>Pokémons are categoriesed by 10 colors, and <strong>[blue] is the most common color</strong> of Pokémon.</p>
                 <div id='svg_color'></div>
             </div>
         </div>
     </section>
     <!-- pokemon color END! -->
-    <section id="color" class="wrapper bg-img post_section">
-        <div class="dark">
-            <div class="inner">
-                <h2>Pokémon Shape</h2>
-                <div id='svg_shape'></div>
-            </div>
-        </div>
-    </section>
-    <!-- pokemon color END! -->
+
     <!-- Footer -->
     <footer id="footer">
         <div class="inner">
