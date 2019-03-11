@@ -296,73 +296,7 @@ function numberGraph() {
 
     });
     // pokemin evl with 3 stages
-    d3.json('/data/EvolveTwoStage', function(error, data) {
-        if (error) { console.warn(error); }
-        data.forEach(function(d) {
-            d.evl_id = +d.evl_id;
-            d.stage_change = +d.stage_change;
-            d.weight_change = +d.weight_change;
-        });
-        height_change = data.map(d => d.stage_change);
 
-        chartGroup = initialSvg('#evolution-two');
-        yScale = initYScale(data.map(d => d.weight_change), chartGroup);
-        xScale = initXScaleScattter(data.map(d => d.stage_change), chartGroup);
-        var toolTip = d3.tip()
-            .attr('class', 'd3-tip')
-            .offset([60, 60])
-            .html(function(d) {
-                var chain = d.chain;
-                console.log(chain.substring(1, -1));
-                return (`Evolution Chain: ${d.chain}`);
-            });
-        // height change 2 stages circle 
-        var circle_2stg = chartGroup.append('g').selectAll("cirlce")
-            .data(data)
-            .enter()
-            .append("circle")
-            .classed('circle', true)
-            .attr('fill-opacity', 0.8)
-            .attr("cx", d => xScale(d.stage_change))
-            .attr("cy", d => yScale(d.weight_change))
-            .attr("r", radius)
-            .on('mouseover', function(data) {
-                toolTip.show(data, this);
-            }).on('mouseout', function() {
-                toolTip.hide();
-            });
-        circle_2stg.call(toolTip);
-
-        d3.json('/data/EvolveThreeStage', function(error, data) {
-            if (error) { console.warn(error); }
-            data.forEach(function(d) {
-                d.evl_id = +d.evl_id;
-                d.height_change = +d.height_change;
-                d.weight_change = +d.weight_change;
-                d.weight_1 = +d.weight_1;
-                d.weight_2 = +d.weight_2;
-                d.step1 = +d.step1;
-                d.step2 = +d.step2;
-            });
-            // height change 2 stages circle 
-            var circle_3stg = chartGroup.append('g').selectAll("cirlce")
-                .data(data)
-                .enter()
-                .append("circle")
-                .classed('circle-3stg', true)
-                .attr('fill-opacity', 0.8)
-                .attr("cx", d => xScale(d.height_change))
-                .attr("cy", d => yScale(d.weight_change))
-                .attr("r", radius)
-                .on('mouseover', function(data) {
-                    toolTip.show(data, this);
-                }).on('mouseout', function() {
-                    toolTip.hide();
-                });
-            circle_2stg.call(toolTip);
-        });
-        // pokemon evolution with 3 stage END
-    });
     //pokemon evolution with 2 stages END
     d3.json('/data/EvolveThreeStage', function(error, data) {
         if (error) { console.warn(error); }
