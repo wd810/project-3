@@ -1,3 +1,5 @@
+watch data report lively: https://project3staging.herokuapp.com/
+
 Pokemon Power Rank & Encounter Possibility 
 
 Background
