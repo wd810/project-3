@@ -87,3 +87,9 @@ class EvlThreeInPerCentent(BaseModel, db.Model):
     weight_2 = db.Column(db.Integer)
     experience_1 = db.Column(db.Integer)
     experience_2 = db.Column(db.Integer)
+
+class AreaNumMethods(BaseModel, db.Model):
+    __tablename__ = 'num_method'
+    index = db.Column(db.Integer, primary_key=True)
+    num_method_to_catch = db.Column(db.Integer)
+    rate = db.Column(db.Float)

@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify, request
-from flask_pymongo import PyMongo
+#from flask_pymongo import PyMongo
 import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
@@ -8,13 +8,13 @@ from flask_sqlalchemy import SQLAlchemy
 import json
 import pandas as pd
 import sys
-from .models import *
-#from models import *
+#from .models import *
+from models import *
 
 app = Flask(__name__)
-app.config['MONGO_DBNAME'] = 'pokemon_db'
-app.config['MONGO_URI'] = 'mongodb://localhost:27017/pokemon_db'
-mongo = PyMongo(app)
+#app.config['MONGO_DBNAME'] = 'pokemon_db'
+#app.config['MONGO_URI'] = 'mongodb://localhost:27017/pokemon_db'
+#mongo = PyMongo(app)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://vuncmjlkhnmans:610ac2b5df61bcd4aed66992647b94f98b0fbb4b677f4f721f09b244482d718a@ec2-54-204-41-109.compute-1.amazonaws.com/d8vgn7vtrufr72'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # silence the deprecation warning
@@ -62,16 +62,17 @@ def shape():
 @app.route('/evolution')
 def evolution():
     return render_template('evolution.html')
+
+# encounter page
+@app.route('/encounter')
+def generic():
+    #img_list = mongo.db.Hemispheres.find()
+    return render_template('encounter.html')
+
 # element page
 @app.route('/elements')
 def elements():
     return render_template('elements.html')
-
-# generic page
-@app.route('/generic')
-def generic():
-    #img_list = mongo.db.Hemispheres.find()
-    return render_template('generic.html')
 
 if(__name__ == '__main__'):
     app.run(debug = True)
