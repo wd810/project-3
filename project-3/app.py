@@ -8,8 +8,8 @@ from flask_sqlalchemy import SQLAlchemy
 import json
 import pandas as pd
 import sys
-#from .models import *
-from models import *
+from .models import *
+#from models import *
 
 app = Flask(__name__)
 #app.config['MONGO_DBNAME'] = 'pokemon_db'
