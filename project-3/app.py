@@ -65,8 +65,7 @@ def evolution():
 
 # encounter page
 @app.route('/encounter')
-def generic():
-    #img_list = mongo.db.Hemispheres.find()
+def encounter():
     return render_template('encounter.html')
 
 # element page
