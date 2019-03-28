@@ -93,3 +93,9 @@ class AreaNumMethods(BaseModel, db.Model):
     index = db.Column(db.Integer, primary_key=True)
     num_method_to_catch = db.Column(db.Integer)
     rate = db.Column(db.Float)
+
+class CatchRateMethod(BaseModel, db.Model):
+    __tablename__ = 'catch_rate_method'
+    num_method_to_catch = db.Column(db.Integer, primary_key=True)
+    avg_catch_one_pokemon = db.Column(db.Float)
+    num_pokemon_encounter = db.Column(db.Float)

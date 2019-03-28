@@ -100,15 +100,6 @@ d3.json('/data/EvlTwoInPerCentent', function(error, data) {
         .attr('transform', `translate(0, ${chartHeight})`)
         .call(d3.axisBottom(xScale).tickFormat(""));
 
-    //add weight line
-    var weight = d3.line()
-        .x(d => xScale(d.chain))
-        .y(d => yScale(d.weight))
-
-    chartGroup.append('path')
-        .data([data])
-        .attr('d', weight)
-        .classed('line blue', true);
     // add height line
     var height = d3.line()
         .x(d => xScale(d.chain))
@@ -127,42 +118,50 @@ d3.json('/data/EvlTwoInPerCentent', function(error, data) {
         .data([data])
         .attr('d', experience)
         .classed('line orange', true);
+    //add weight line
+    var weight = d3.line()
+        .x(d => xScale(d.chain))
+        .y(d => yScale(d.weight))
+
+    chartGroup.append('path')
+        .data([data])
+        .attr('d', weight)
+        .classed('line blue', true);
     //add tooltip
-    var bisect = d3.bisector(function(d) { console.log(d.chain); return d.chain }).left;
-    var toolTip = d3.tip()
-        .attr('class', 'tip')
-        .offset([0, 0])
-        .html(function(d) {
-            return "<h5>type: 333</h5>";
-        });
+    var focus = chartGroup.append('g')
+        .attr('class', 'focus')
+        .style('display', 'none');
+    focus.append('line')
+        .attr('class', 'hover-line')
+        .attr('y1', 0)
+        .attr('y2', chartHeight);
+    focus.append('div')
+        .attr('class', 'tip');
 
-    var tipBox = chartGroup
+    var mouse_scale = data.map(d => xScale(d.chain));
+    chartGroup.append("rect")
+        .attr("transform", "translate(0,0)")
+        .attr('class', 'overlay')
+        .attr("width", chartWidth)
+        .attr("height", chartHeight)
         .on('mousemove', function() {
-            var chain_x = d3.mouse(this)[0];
-            var i = bisect(data, chain_x);
-            console.log(i);
-
+            var mouse_x = d3.mouse(this)[0];
+            var i = d3.bisect(mouse_scale, mouse_x);
+            //var mouseScale = xScale.invert(mouse_x);
+            var d1 = data[i];
+            var d0 = data[i - 1];
+            var d = d1.chain - i > i - d0.chain ? d0 : d1;
+            if (d) {
+                focus.style('display', 'block')
+                    .attr("transform", "translate(" + xScale(d.chain) + ",0)");
+                focus.selectAll('div')
+                    .html("<h5>chain: " + d.chain + "</h5><h5>weight: " + d.weight + '</h5>');
+            }
         })
-        .on('mouseout', toolTip.hide);
-    tipBox.call(toolTip);
+        .on("mouseover", function() { focus.style("display", null); })
+        .on('mouseout', function() { focus.style('display', 'none'); });
+
 });
-
-function removeTooltip() {
-    if (tooltip) tooltip.style('display', 'none');
-    if (tooltipLine) tooltipLine.attr('stroke', 'none');
-}
-
-function drawTooltip(data) {
-    tooltip.html(year)
-        .style('display', 'block')
-        .style('left', d3.event.pageX + 20)
-        .style('top', d3.event.pageY - 20)
-        .selectAll()
-        .data(data).enter()
-        .append('div')
-        .style('color', 'red')
-        .html(d => d.weight + ': ');
-}
 // pokemon evl with 2 stages END 
 d3.json('/data/EvlThreeInPerCentent', function(error, data) {
     if (error) { console.warn(error); }
@@ -176,7 +175,16 @@ d3.json('/data/EvlThreeInPerCentent', function(error, data) {
     });
     chartGroup = initialSvg('#evol-3');
     yScale = initYScale(data.map(d => d.height_2), chartGroup);
-    xScale = initXScaleBarChart(data.map(d => d.chain), chartGroup);
+    // add x bottom axis
+    var xScale = d3.scaleBand()
+        .range([0, chartWidth])
+        .domain(data.map(d => d.chain))
+        .padding(0.2);
+
+    chartGroup.append('g')
+        .attr('class', 'axis')
+        .attr('transform', `translate(0, ${chartHeight})`)
+        .call(d3.axisBottom(xScale).tickFormat(""));
 
     // add weight 1 line
     var weight_1 = d3.line()
@@ -231,7 +239,7 @@ d3.json('/data/EvlThreeInPerCentent', function(error, data) {
         .classed('line purple', true);
 
 });
-// pokemin evl with 3 stages
+// pokemon evl with 3 stages
 
 d3.json('/data/EvolveThreeStage', function(error, data) {
     if (error) { console.warn(error); }

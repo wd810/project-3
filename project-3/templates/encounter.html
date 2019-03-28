@@ -63,15 +63,24 @@
         <div class="dark">
             <div class="inner">
                 <h2>Number of methods to Catch Pokémon by Location Areas</h2>
-                <p>There are <strong>[651] location areas</strong> of Pokémon. 
-                The maximum methods available to use to catch Pokémon at one aera is 6, however, it is interesting that there are [71] areas only available to encounter Pokémon but without common methods to catch Pokémon. 
-                In nearly half location areas(47%), there is only [one] method available to catch pokemon.</p>
+                <p>There are <strong>[651] location areas</strong> of Pokémon. The maximum methods available to use to catch Pokémon at one aera is 6, however, it is interesting that there are [71] areas only available to encounter Pokémon but without common
+                    methods to catch Pokémon. In nearly half location areas(47%), there is only [one] method available to catch pokemon.</p>
                 <div id='method-catch'></div>
             </div>
         </div>
     </section>
     <!-- method to catch by location area END! -->
-
+    <section id="number" class="wrapper bg-img post_section" data-bg="../static/img/pokemon-bg-5.png">
+        <div class="dark">
+            <div class="inner">
+                <h2>Average Percentage of Catching one Pokémon by Location Area Catch Methods</h2>
+                <p>There are <strong>[651] location areas</strong> of Pokémon. The maximum methods available to use to catch Pokémon at one aera is 6, however, it is interesting that there are [71] areas only available to encounter Pokémon but without common
+                    methods to catch Pokémon. In nearly half location areas(47%), there is only [one] method available to catch pokemon.</p>
+                <div id='rate_catch'></div>
+            </div>
+        </div>
+    </section>
+    <!-- catch rate VS methods by location area END ! -->
     <!-- Footer -->
     <footer id="footer">
         <div class="inner">
@@ -90,7 +99,7 @@
     </footer>
 
     <!-- Scripts -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="{{ url_for( 'static', filename='js/jquery.min.js' ) }}"></script>
