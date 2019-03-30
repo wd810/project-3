@@ -135,8 +135,7 @@ d3.json('/data/EvlTwoInPerCentent', function(error, data) {
         .attr('class', 'hover-line')
         .attr('y1', 0)
         .attr('y2', chartHeight);
-    focus.append('div')
-        .attr('class', 'tip');
+    focus.append('div');
 
     var mouse_scale = data.map(d => xScale(d.chain));
     chartGroup.append("rect")
