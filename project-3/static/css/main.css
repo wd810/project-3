@@ -3827,6 +3827,15 @@ body.is-loading #banner:before {
     margin: 0;
 }
 
+.post table {
+    text-align: left;
+}
+
+.easy-pokemon td {
+    vertical-align: middle;
+    padding: 0;
+}
+
 @-moz-keyframes inner {
     0% {
         opacity: 0;
