@@ -17,7 +17,7 @@
 
     <!-- Header -->
     <header id="header" class="alt">
-        <div class="logo"><a href="/">Pokémon Big Data <span>Evolution</span></a></div>
+        <div class="logo"><a href="/">Pokémon Big Data <span>Encounter</span></a></div>
         <a href="#menu"><span>Menu</span></a>
     </header>
 
@@ -63,24 +63,162 @@
         <div class="dark">
             <div class="inner">
                 <h2>Number of methods to Catch Pokémon by Location Areas</h2>
-                <p>There are <strong>[651] location areas</strong> of Pokémon. The maximum methods available to use to catch Pokémon at one aera is 6, however, it is interesting that there are [71] areas only available to encounter Pokémon but without common
+                <p>There are <strong>[651] location areas</strong> in Pokémon. The maximum methods available to use to catch Pokémon at one aera is 6, however, it is interesting that there are [71] areas only available to encounter Pokémon but without common
                     methods to catch Pokémon. In nearly half location areas(47%), there is only [one] method available to catch pokemon.</p>
                 <div id='method-catch'></div>
+                <!-- method to catch by location area END! -->
+                <h2>Average Percentage of Catching one Pokémon by Possible Catch Methods</h2>
+                <p>In general, one location area with more available methods to catch Pokémon has a comparatively higher rate in encountering Pokémon and catching Pokémon.</p>
+                <div id='rate_catch'></div>
+                <!-- catch rate VS methods by location area END ! -->
             </div>
         </div>
     </section>
-    <!-- method to catch by location area END! -->
-    <section id="number" class="wrapper bg-img post_section" data-bg="../static/img/pokemon-bg-5.png">
+    <!-- method graph section END ! -->
+    <section class="wrapper bg-img post_section">
         <div class="dark">
             <div class="inner">
-                <h2>Average Percentage of Catching one Pokémon by Location Area Catch Methods</h2>
-                <p>There are <strong>[651] location areas</strong> of Pokémon. The maximum methods available to use to catch Pokémon at one aera is 6, however, it is interesting that there are [71] areas only available to encounter Pokémon but without common
-                    methods to catch Pokémon. In nearly half location areas(47%), there is only [one] method available to catch pokemon.</p>
-                <div id='rate_catch'></div>
+                <header>
+                    <h2>Top 10 Location Areas to Catch Pokémon</h2>
+                    <p>8 out 10 areas in the Top 10 list are with 4 methods to encounter Pokémon, it is no wonder that <strong>location areas with 4 catch methods have the highest rate of catching Pokémon(5.85%) in average.</strong></p>
+                </header>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Location Area</th>
+                            <th>Avg Catch Rate of One Pokémon</th>
+                            <th>Available Methods to Catch</th>
+                            <th>Max Number Pokémon to Encounter</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>mt-ember-b3f</td>
+                            <td>16.25%</td>
+                            <td>2</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>eterna-city-area</td>
+                            <td>15.74%</td>
+                            <td>4</td>
+                            <td>6</td>
+                        </tr>
+                        <tr>
+                            <td>sinnoh-pokemon-league-area</td>
+                            <td>14.22%</td>
+                            <td>4</td>
+                            <td>8</td>
+                        </tr>
+                        <tr>
+                            <td>vermilion-city-area</td>
+                            <td>13.91%</td>
+                            <td>5</td>
+                            <td>17</td>
+                        </tr>
+                        <tr>
+                            <td>pallet-town-area</td>
+                            <td>13.50%</td>
+                            <td>4</td>
+                            <td>16</td>
+                        </tr>
+                        <tr>
+                            <td>sinnoh-sea-route-223-area</td>
+                            <td>13.42%</td>
+                            <td>4</td>
+                            <td>9</td>
+                        </tr>
+                        <tr>
+                            <td>cerulean-city-area</td>
+                            <td>13.18%</td>
+                            <td>4</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>sinnoh-route-219-area</td>
+                            <td>13.17%</td>
+                            <td>4</td>
+                            <td>9</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>resort-area-area</td>
+                            <td>12.35%</td>
+                            <td>4</td>
+                            <td>6</td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <!-- top 10 Area END ! -->
+                <header>
+                    <h2>Easy Encounter & Catch Pokémon</h2>
+                    <p>Here listed the most easy encounter & catch Pokémon. They are all [water] type amazingly.</p>
+                </header>
+                <table class="easy-pokemon">
+                    <thead>
+                        <tr>
+                            <th>Pokémon</th>
+                            <th>Name</th>
+                            <th>Available Areas to Meet</th>
+                            <th>Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/129.png" /></td>
+                            <td>magikarp</td>
+                            <td>210</td>
+                            <td>water</td>
+                        </tr>
+                        <tr>
+                            <td><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/72.png"></td>
+                            <td>tentacool</td>
+                            <td>102</td>
+                            <td>water, poison</td>
+                        </tr>
+                        <tr>
+                            <td><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/60.png" /></td>
+                            <td>poliwag</td>
+                            <td>88</td>
+                            <td>water</td>
+                        </tr>
+                        <tr>
+                            <td><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/118.png"></td>
+                            <td>goldeen</td>
+                            <td>97</td>
+                            <td>water</td>
+                        </tr>
+                        <tr>
+                            <td><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/130.png" /></td>
+                            <td>gyarados</td>
+                            <td>106</td>
+                            <td>water, flying</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/54.png" /></td>
+                            <td>psyduck</td>
+                            <td>86</td>
+                            <td>water</td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <!-- Top easy Pokemon END ! -->
+                <header>
+                    <h2>The Encounter & Catch relationship between Pokémon and Location Area</h2>
+                    <p>I selected 96 most easy to catch Pokémon(10%) and 65 most easy to encounter Pokémon location areas(10%) as data sample to compare and analize.</p>
+                    <p>76 out of 96 Pokémon(79.17%) are able to encounter in the top 65 location areas, and 72 out of 96(75%) Pokémon are able to be caught.</p>
+                    <p>As a result, the high rate of encountering or catching Pokémon in a certain location areas is mainly because of the easy-to-catch Pokémon. In another word, Pokémon apprears in these easy-to-catch location area is probably those easy-to-catch
+                        Pokémon.
+                    </p>
+                </header>
+                <!-- relationship between pokemon and location area-->
             </div>
         </div>
     </section>
-    <!-- catch rate VS methods by location area END ! -->
+
     <!-- Footer -->
     <footer id="footer">
         <div class="inner">
