@@ -99,3 +99,43 @@ class CatchRateMethod(BaseModel, db.Model):
     num_method_to_catch = db.Column(db.Integer, primary_key=True)
     avg_catch_one_pokemon = db.Column(db.Float)
     num_pokemon_encounter = db.Column(db.Float)
+
+class MoveDamageClass(BaseModel, db.Model):
+    __tablename__ = 'move_damage_class'
+    damage_class = db.Column(db.String(120), primary_key=True)
+    count = db.Column(db.Integer)
+    accuracy = db.Column(db.Float)
+    power = db.Column(db.Float)
+    per = db.Column(db.Float)
+
+class MoveCategory(BaseModel, db.Model):
+    __tablename__ = 'move_category'
+    category = db.Column(db.String(120), primary_key=True)
+    count = db.Column(db.Integer)
+    accuracy = db.Column(db.Float)
+    power = db.Column(db.Float)
+    acc_power = db.Column(db.Float)
+    per = db.Column(db.Float)
+
+class CombatsHistory(BaseModel, db.Model):
+    __tablename__ = 'combats_history'
+    bat_instance = db.Column(db.String(120), primary_key=True)
+    Winner = db.Column(db.Integer)
+    battle_time = db.Column(db.Integer)
+    win_rate = db.Column(db.Float)
+
+class PokemonBattle(BaseModel, db.Model):
+    __tablename__ = 'pokemon_battle'
+    pokemon_id = db.Column(db.Integer, primary_key=True)
+    lose_battle = db.Column(db.Integer)
+    win_battle = db.Column(db.Integer)
+    battle_num = db.Column(db.Integer)
+    win_rate = db.Column(db.Float)
+
+class PokemonList(BaseModel, db.Model):
+    __tablename__ = 'pokemon_predict_list'
+    pokemon_id = db.Column(db.Integer, primary_key=True)
+    type_1 = db.Column(db.String(120))
+    type_2 = db.Column(db.String(120))
+    name = db.Column(db.String(120))
+    sprite = db.Column(db.String(120))

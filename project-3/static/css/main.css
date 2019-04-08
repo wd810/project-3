@@ -4078,6 +4078,20 @@ body.is-loading #banner:before {
 }
 
 
+/* predict page */
+
+#p-list {
+    max-height: 50px;
+}
+
+#p-list li {
+    list-style: none;
+}
+
+
+/* predict page END */
+
+
 /* svg */
 
 .axis text {
