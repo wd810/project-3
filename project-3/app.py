@@ -40,6 +40,7 @@ def data(item):
     return jsonify(output)
 
 # shape page
+'''
 @app.route('/api/shape', methods=['GET'])
 def api_shape():
     type_data = mongo.db.pokemon_type.find()
@@ -53,10 +54,9 @@ def api_shape():
              'number': item['number']
              })
     return jsonify(output)
-
+'''
 @app.route('/shape')
 def shape():
-    #type_data = pokemon_type_json
     return render_template('shape.html')
 
 @app.route('/evolution')
@@ -68,10 +68,20 @@ def evolution():
 def encounter():
     return render_template('encounter.html')
 
+# move page
+@app.route('/move')
+def move():
+    return render_template('move.html')
+
 # element page
 @app.route('/elements')
 def elements():
     return render_template('elements.html')
+
+# battle predict page
+@app.route('/predict')
+def predict():
+    return render_template('predict.html')
 
 if(__name__ == '__main__'):
     app.run(debug = True)

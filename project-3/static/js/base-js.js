@@ -12,6 +12,8 @@ var chartHeight = svgHeight - margin.top - margin.bottom;
 var barSpacing = 10; // 10x scale on rect height
 // create a 'radius' variable for scatter chart plot.
 var radius = 10;
+// pie chart radius
+var pie_radius = Math.min(chartWidth, chartHeight) / 2 - margin.top;
 // create color scale for global use
 var color = d3.scaleOrdinal()
     .range(d3.schemeCategory20);
