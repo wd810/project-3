@@ -1,4 +1,6 @@
 var app = angular.module('myApp', []);
+var pok_1 = 0;
+var pok_2 = 0;
 app.controller('myCtrl', function($scope, $http) {
     // load available pokemon for battle prediction
     $scope.pok_1_id = '';
@@ -13,14 +15,31 @@ app.controller('myCtrl', function($scope, $http) {
             $scope.data = response.data;
             // select pokemon
             $scope.select_pok = function(p_id, p_name, p_img) {
-                //var p_id = d;
-                if ($scope.pok_1_id == '') {
-                    $scope.pok_1_id = p_id;
+                if ($scope.pok_1_name == '') {
+                    pok_1 = p_id;
                     $scope.pok_1_name = p_name;
                     $scope.pok_1_img = p_img;
+                } else if ($scope.pok_2_name == '') {
+                    pok_2 = p_id;
+                    $scope.pok_2_name = p_name;
+                    $scope.pok_2_img = p_img;
                 }
             }
         });
+});
+app.controller('submitPokemon', function($scope, $http) {
+    // submite pokemon data to get battle predition data
+    $scope.submit = function() {
+        console.log(pok_1, pok_2);
+        // check if both two pokemon are selected
+        if (pok_1 != 0 && pok_2 != 0) {
+            var Indata = { 'pok_1': pok_1, 'pok_2': pok_2 }
+            $http.post('/pokemon-go', Indata).then(function(response) {
+                console.log(response.data);
+            });
+            // http post END !!!
+        }
+    }
 });
 //bind data with dropdown list
 var pok_list = d3.select('tbody').attr('ng-repeat', 'x in data | filter: dataFilter');
@@ -29,3 +48,5 @@ var name = tr.append('td').text('{{x.name}}');
 var img = tr.append('td').append('img').attr('src', '{{x.sprite}}');
 var type_1 = tr.append('td').text('{{x.type_1}}');
 var type_2 = tr.append('td').text('{{x.type_2}}');
+
+var submit_btn = d3.select('#submit_pok').attr('ng-click', 'submit()');
