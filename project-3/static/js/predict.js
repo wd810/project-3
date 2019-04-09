@@ -28,14 +28,17 @@ app.controller('myCtrl', function($scope, $http) {
         });
 });
 app.controller('submitPokemon', function($scope, $http) {
+    $scope.win_pok = '';
+    $scope.win_rate = '';
     // submite pokemon data to get battle predition data
     $scope.submit = function() {
-        console.log(pok_1, pok_2);
         // check if both two pokemon are selected
         if (pok_1 != 0 && pok_2 != 0) {
             var Indata = { 'pok_1': pok_1, 'pok_2': pok_2 }
             $http.post('/pokemon-go', Indata).then(function(response) {
-                console.log(response.data);
+                data = response.data;
+                $scope.win_pok = data.win_predict;
+                $scope.win_rate = data.win_rate;
             });
             // http post END !!!
         }
