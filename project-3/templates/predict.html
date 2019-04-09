@@ -58,8 +58,19 @@
                         <input ng-bind='pok_2_name' type="text" />
                     </div>
                 </div>
+
                 <dic class="row" ng-controller='submitPokemon'>
                     <button class="button special" id='submit_pok'>Pokémon Go !</button>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label>Predict Winner:</label>
+                            <h5 ng-bind='win_pok'></h5>
+                        </div>
+                        <div class="col-sm-6">
+                            <label>Predict Win Rate:</label>
+                            <h5 ng-bind='win_rate'></h5>
+                        </div>
+                    </div>
                 </dic>
                 <div class="row uniform">
                     <div class="6u 12u$(xsmall)">
