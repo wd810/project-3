@@ -10,6 +10,7 @@
     <title>Battle Predict - Pokémon Big Data</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
 </head>
 
@@ -44,17 +45,24 @@
                     <p>Choose 2 Pokémon from Database to check the battle win rate prediction</p>
                 </header>
                 <div class="row uniform">
+                    <div id='pok_1_box' class="col-sm-6 6u 12u$(xsmall)">
+                        <h4>Pokémon 1</h4>
+                        <img src='{{pok_1_img}}' />
+                        <h5 ng-bind='pok_1_name'></h5>
+                        <input ng-bind='pok_1_name' type="text" />
+                    </div>
+                    <div id='pok_2_box' class="col-sm-6 6u 12u$(xsmall)">
+                        <h4>Pokémon 2</h4>
+                        <img ng-src='{{pok_2_img}}' />
+                        <h5 ng-bind='pok_2_name'></h5>
+                        <input ng-bind='pok_2_name' type="text" />
+                    </div>
+                </div>
+                <dic class="row" ng-controller='submitPokemon'>
+                    <button class="button special" id='submit_pok'>Pokémon Go !</button>
+                </dic>
+                <div class="row uniform">
                     <div class="6u 12u$(xsmall)">
-                        <div id='pok_1_box'>
-                            <h4>Pokémon 1</h4>
-                            <img ng-src='{{pok_1_img}}' />
-                            <h5 ng-bind='pok_1_name'></h5>
-                        </div>
-                        <div id='pok_2_box'>
-                            <h4>Pokémon 2</h4>
-                            <img ng-src='{{pok_2_img}}' />
-                            <h5 ng-bind='pok_2_name'></h5>
-                        </div>
                         <input ng-model="dataFilter" type="text" name="pok_1" id="pok_1" value="" placeholder="Search Pokémon" />
                     </div>
                 </div>
