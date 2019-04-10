@@ -1,55 +1,100 @@
 var app = angular.module('myApp', []);
-var pok_1 = 0;
-var pok_2 = 0;
+var pok_1 = {};
+var pok_2 = {};
+
 app.controller('myCtrl', function($scope, $http) {
     // load available pokemon for battle prediction
-    $scope.pok_1_id = '';
-    $scope.pok_1_img = '';
-    $scope.pok_1_name = '';
-    $scope.pok_2_id = '';
-    $scope.pok_2_img = '';
-    $scope.pok_2_name = '';
+    $scope.pok_1_s = {
+        'name': 'Pokémon 1',
+        'id': 0,
+        'type1': '',
+        'type2': '',
+        'win_rate': ''
+    };
+    $scope.pok_2_s = {
+        'name': 'Pokémon 2',
+        'id': 0,
+        'type1': '',
+        'type2': '',
+        'win_rate': ''
+    };
+    $scope.data
+
+    $scope.win_pok = '';
 
     $http.get('/data/PokemonList')
         .then(function(response) {
             $scope.data = response.data;
-            // select pokemon
-            $scope.select_pok = function(p_id, p_name, p_img) {
-                if ($scope.pok_1_name == '') {
-                    pok_1 = p_id;
-                    $scope.pok_1_name = p_name;
-                    $scope.pok_1_img = p_img;
-                } else if ($scope.pok_2_name == '') {
-                    pok_2 = p_id;
-                    $scope.pok_2_name = p_name;
-                    $scope.pok_2_img = p_img;
-                }
-            }
-        });
-});
-app.controller('submitPokemon', function($scope, $http) {
-    $scope.win_pok = '';
-    $scope.win_rate = '';
-    // submite pokemon data to get battle predition data
-    $scope.submit = function() {
-        // check if both two pokemon are selected
-        if (pok_1 != 0 && pok_2 != 0) {
-            var Indata = { 'pok_1': pok_1, 'pok_2': pok_2 }
-            $http.post('/pokemon-go', Indata).then(function(response) {
-                data = response.data;
-                $scope.win_pok = data.win_predict;
-                $scope.win_rate = data.win_rate;
-            });
-            // http post END !!!
-        }
-    }
-});
-//bind data with dropdown list
-var pok_list = d3.select('tbody').attr('ng-repeat', 'x in data | filter: dataFilter');
-var tr = pok_list.append('tr').attr('ng-click', 'select_pok(x.pokemon_id, x.name, x.sprite)');
-var name = tr.append('td').text('{{x.name}}');
-var img = tr.append('td').append('img').attr('src', '{{x.sprite}}');
-var type_1 = tr.append('td').text('{{x.type_1}}');
-var type_2 = tr.append('td').text('{{x.type_2}}');
+            // select pokemon one
+            $scope.select_pok_1 = function(x) {
+                $('#pok_1_img').attr('src', x.sprite);
+                $scope.pok_1_s.id = x.pokemon_id;
+                $scope.pok_1_s.name = x.name;
+                $scope.pok_1_s.type1 = x.type_1;
+                $scope.pok_1_s.type2 = x.type_2 != 'n.a' ? x.type_2 : '';
 
+                $scope.data = response.data;
+                $scope.data = $scope.data.filter(function(data) {
+                    return data.pokemon_id != $scope.pok_1_s.id && data.pokemon_id != $scope.pok_2_s.id;
+                });
+                $('.easy-pokemon').removeClass('focus');
+            }
+
+            // select pokemon two
+            $scope.select_pok_2 = function(x) {
+                $('#pok_2_img').attr('src', x.sprite);
+                $scope.pok_2_s.id = x.pokemon_id;
+                $scope.pok_2_s.name = x.name;
+                $scope.pok_2_s.type1 = x.type_1;
+                $scope.pok_2_s.type2 = x.type_2 != 'n.a' ? x.type_2 : '';
+
+                $scope.data = response.data;
+                $scope.data = $scope.data.filter(function(data) {
+                    return data.pokemon_id != $scope.pok_1_s.id && data.pokemon_id != $scope.pok_2_s.id;
+                });
+                $('.easy-pokemon').removeClass('focus');
+            }
+
+            // submite pokemon data to get battle predition data
+            $scope.submit = function() {
+                // check if both two pokemon are selected
+                var Indata = { 'pok_1': $scope.pok_1_s.id, 'pok_2': $scope.pok_2_s.id }
+                console.log(Indata);
+                $http.post('/pokemon-go', Indata).then(function(response) {
+                    data = response.data;
+                    console.log(data);
+                    var lose_rate = Math.round((1 - data.win_rate) * 100) / 100;
+                    if ($scope.pok_1_s.id == data.win_predict) {
+                        $('#pok_1_box').addClass('winner-box');
+                        $scope.pok_1_s.win_rate = 'Win Rate: ' + data.win_rate + '%';
+                        $scope.pok_2_s.win_rate = 'Win Rate: ' + lose_rate + '%';
+                    } else {
+                        $('#pok_2_box').addClass('winner-box');
+                        $scope.pok_2_s.win_rate = 'Win Rate: ' + data.win_rate + '%';
+                        $scope.pok_1_s.win_rate = 'Win Rate: ' + lose_rate + '%';
+                    }
+                    //$scope.win_pok = data.win_predict;
+
+                });
+                // http post END !!!
+            }
+
+        });
+
+});
+//initial pokemon filter 1
+var pok_list_1 = d3.select('#pok_list_1 tbody').attr('ng-repeat', 'x in data | filter: pok_filter_1');
+var tr_pok_list_1 = pok_list_1.append('tr').attr('ng-click', 'select_pok_1(x)');
+var name = tr_pok_list_1.append('td').text('{{x.name}}');
+var img = tr_pok_list_1.append('td').append('img').attr('src', '{{x.sprite}}');
+//initial pokemon filter 2
+var pok_list_2 = d3.select('#pok_list_2 tbody').attr('ng-repeat', 'x in data | filter: pok_filter_2');
+var tr_pok_list_2 = pok_list_2.append('tr').attr('ng-click', 'select_pok_2(x)');
+var name = tr_pok_list_2.append('td').text('{{x.name}}');
+var img = tr_pok_list_2.append('td').append('img').attr('src', '{{x.sprite}}');
+// pokemon dropdown select list hide() and show()
+$('.input-filter').on('focus', function(e) {
+    $(this).next().addClass('focus');
+});
+// add submit function when 2 pokemons are selected
 var submit_btn = d3.select('#submit_pok').attr('ng-click', 'submit()');

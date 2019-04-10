@@ -45,40 +45,78 @@
                     <p>Choose 2 Pokémon from Database to check the battle win rate prediction</p>
                 </header>
                 <div class="row uniform">
-                    <div id='pok_1_box' class="col-sm-6 6u 12u$(xsmall)">
-                        <h4>Pokémon 1</h4>
-                        <img src='{{pok_1_img}}' />
-                        <h5 ng-bind='pok_1_name'></h5>
-                        <input ng-bind='pok_1_name' type="text" />
+                    <div class="col-sm-6 6u 12u$(xsmall)">
+                        <div id='pok_1_box' class='pokemon-box'>
+                            <div class="pok-img-box">
+                                <img src='' id='pok_1_img' />
+                            </div>
+                            <div>
+                                <h4 ng-bind='pok_1_s.name'></h4>
+                                <span ng-bind=pok_1_s.type1></span>&nbsp;
+                                <span ng-bind=pok_1_s.type2></span>
+                                <div>
+                                    <h6 ng-bind='pok_1_s.win_rate'></h6>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="select-box-1">
+                            <input ng-model="pok_filter_1.name" class="input-filter" type="text" value="" placeholder="Select Pokémon One" />
+                            <table class="easy-pokemon" id='pok_list_1'>
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Sprite</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+
                     </div>
-                    <div id='pok_2_box' class="col-sm-6 6u 12u$(xsmall)">
-                        <h4>Pokémon 2</h4>
-                        <img ng-src='{{pok_2_img}}' />
-                        <h5 ng-bind='pok_2_name'></h5>
-                        <input ng-bind='pok_2_name' type="text" />
+                    <div class="col-sm-6 6u 12u$(xsmall)">
+                        <div id='pok_2_box' class='pokemon-box'>
+                            <div class="pok-img-box">
+                                <img src='' id='pok_2_img' />
+                            </div>
+                            <div>
+                                <h4 ng-bind='pok_2_s.name'></h4>
+                                <span ng-bind=pok_2_s.type1></span>&nbsp;
+                                <span ng-bind=pok_2_s.type2></span>
+                                <div>
+                                    <h6 ng-bind='pok_2_s.win_rate'></h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="select-box">
+                            <input ng-model="pok_filter_2.name" class="input-filter" type="text" value="" placeholder="Select Pokémon Two" />
+                            <table class="easy-pokemon" id='pok_list_2'>
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Sprite</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+
                     </div>
                 </div>
 
-                <dic class="row" ng-controller='submitPokemon'>
+                <dic class="row" id='predict-result'>
                     <button class="button special" id='submit_pok'>Pokémon Go !</button>
                     <div class="row">
                         <div class="col-sm-6">
                             <label>Predict Winner:</label>
                             <h5 ng-bind='win_pok'></h5>
                         </div>
-                        <div class="col-sm-6">
-                            <label>Predict Win Rate:</label>
-                            <h5 ng-bind='win_rate'></h5>
-                        </div>
                     </div>
                 </dic>
-                <div class="row uniform">
-                    <div class="6u 12u$(xsmall)">
-                        <input ng-model="dataFilter" type="text" name="pok_1" id="pok_1" value="" placeholder="Search Pokémon" />
-                    </div>
-                </div>
+
                 <!-- input box END !!-->
-                <div class="row">
+                <!--
+                     <div class="row">
                     <table class="easy-pokemon" id='pok_list'>
                         <thead>
                             <tr>
@@ -91,6 +129,8 @@
                         <tbody></tbody>
                     </table>
                 </div>
+                -->
+
             </div>
         </div>
     </section>

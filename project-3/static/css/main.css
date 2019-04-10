@@ -3831,9 +3831,47 @@ body.is-loading #banner:before {
     text-align: left;
 }
 
+.pokemon-box {
+    border: rgba(144, 144, 144, 0.25) solid 2px;
+    border-radius: 4px;
+    display: flex;
+    align-items: stretch;
+    padding: .7em;
+    margin-bottom: 0.7em;
+}
+
+.pokemon-box h4 {
+    margin-bottom: 0.2em;
+}
+
+.winner-box {
+    border: #F64747 solid 2px;
+}
+
+.pok-img-box {
+    height: 96px;
+    width: 96px;
+}
+
+.pokemon-box .pok-img-box img {
+    margin-right: .2em;
+}
+
+.easy-pokemon {
+    display: none;
+}
+
+.focus {
+    display: block;
+}
+
 .easy-pokemon td {
     vertical-align: middle;
     padding: 0;
+}
+
+.toggle-list {
+    display: none;
 }
 
 @-moz-keyframes inner {
