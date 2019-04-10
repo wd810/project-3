@@ -23,7 +23,7 @@ db.init_app(app)
 enough_history = 10
 # win rate general depends on Linear Regression Model R2 score
 win_rate_with_linear = 0.94
-error_rate_mean = 0.04
+error_rate_mean = 4.07
 ''' 
     const data statement END !!!
 '''
