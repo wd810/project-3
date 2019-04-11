@@ -1,26 +1,18 @@
 import pandas as pd
 import numpy as np
 
-''' 
-    intial df data from postgreSQL
-'''
-
-# battle history check list
-bat_history = combats_history_df.bat_instance.to_list()
-# initial win_rate check chart based the history data get
-win_rate = combats_history_df.groupby('battle_time').win_rate.value_counts().to_frame().rename(columns={'win_rate': 'win_num'})
-win_rate_check = win_rate
-''' 
-        intial df data from postgreSQL END !!! 
-'''
-
 '''
     const data statement 
 '''
 # threshhold of battle time in history
 enough_history = 10
 # win rate general depends on Linear Regression Model R2 score
-win_rate_with_linear = 0.94
+win_rate_with_linear = 94
+error_rate_mean = 4.07
+''' 
+    const data statement END !!!
+'''
+
 ''' 
     const data statement END !!!
 '''
@@ -36,7 +28,7 @@ def get_battle_instance(pok_1, pok_2):
 ''' check battle num if battle does not have related records in hostory or record result are even '''
 # win battle check is based on win_battle VS win_rate linear model
 predict_win_rate = lambda x: x * 0.93 + 2.35
-def check_win_battle(pok_id_1, pok_id_2):
+def check_win_battle(full, pok_id_1, pok_id_2):
     # select out pokemon series
     pok_s_1 = full.loc[full.pokemon_id == pok_id_1].T.squeeze()
     pok_s_2 = full.loc[full.pokemon_id == pok_id_2].T.squeeze()
@@ -44,7 +36,7 @@ def check_win_battle(pok_id_1, pok_id_2):
     win_rate_dif = np.abs(pok_s_1.win_rate - pok_s_2.win_rate)
     #win_bat_dif = pok_s_1.win_battle - pok_s_2.win_battle
     if win_rate_dif < error_rate_mean:
-        win_rate_predict = np.round(win_rate_with_linear * win_rate_dif, decimals=2)
+        win_rate_predict = np.round(win_rate_with_linear * win_rate_dif / 100, decimals=2)
     else:
         win_rate_predict = win_rate_with_linear
     
@@ -56,7 +48,7 @@ def check_win_battle(pok_id_1, pok_id_2):
     return {'win_predict': win_pre, 'win_rate': win_rate_predict}
 
 ''' ultimate winner predict function '''
-def predict_winner(pok_id_1, pok_id_2):
+def predict_winner(bat_history, combats_history_df, full, win_rate_check, pok_id_1, pok_id_2):
     pok_1 = np.int(pok_id_1)
     pok_2 = np.int(pok_id_2)
     # set up battle instance
@@ -86,12 +78,12 @@ def predict_winner(pok_id_1, pok_id_2):
                 win_out = {'win_predict': win_pre, 'win_rate': win_rate}
                 
             else:
-                win_out = check_win_battle(pok_1, pok_2)
+                win_out = check_win_battle(full, pok_1, pok_2)
             
         else:
-            win_out = check_win_battle(pok_1, pok_2)
+            win_out = check_win_battle(full, pok_1, pok_2)
 
     else:
-        win_out = check_win_battle(pok_1, pok_2)
+        win_out = check_win_battle(full, pok_1, pok_2)
         
     return win_out

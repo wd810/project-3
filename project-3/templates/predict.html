@@ -42,7 +42,12 @@
             <div class="inner">
                 <header>
                     <h2>Pokémon Battle Predict</h2>
-                    <p>Choose 2 Pokémon from Database to check the battle win rate prediction</p>
+                    <p>Choose 2 Pokémon from the dropdown list to check the battle result prediction</p>
+                    <p>Pokémon battle prediction is a data model based on the theory of marchine learning and mathsmatics probability events calculation. After analyzing <strong>[50,000] Pokémon battle instances</strong> of [783] Pokémon in the database,
+                        I have developed this amazing data model to predict battle result between 2 Pokémon, which has reached <strong>nearly [95%] accurate</strong> prediction in average now.</p>
+                    <p>Furthermore, this data model can improve the accuracy of prediction by gaining [battle instances], which means with the increasing of battle instances gaining in the database, the accuracy of battle prediction has the possibility to
+                        <strong>improve from the current [95%] to as close as [100%]</strong> infinitely.</p>
+                    <p>For more details of data model development and error testing precess, please visit author's <a href="https://github.com/wangdianyh/project-3/blob/master/project-3/data/combats.ipynb" target="_blank">raw ipynb file</a> on Github.</p>
                 </header>
 
                 <div class="row uniform">
@@ -95,37 +100,20 @@
                     </div>
                 </div>
 
-                <dic class="row predict-result">
-                    <div>
-                        <a id='submit_pok'>
-                            <button class="button special">Pokémon Go !</button>
-                        </a>
-                    </div>
-                    <div>
-                        <a id='play-again' ng-click='initial()'>
-                            <button class="button special">Play Again !</button>
-                        </a>
-                    </div>
-
-                </dic>
-
-                <!-- input box END !!-->
-                <!--
-                     <div class="row">
-                    <table class="easy-pokemon" id='pok_list'>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Sprite</th>
-                                <th>Type 1</th>
-                                <th>Type 2</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
+                <div class="row predict-result">
+                    <a id='submit_pok' class="button special big">Pokémon Go !</a>
+                    <!-- play again btn -->
+                    <a id='play-again' class="button special big" ng-click='initial()'>Play Again !</a>
                 </div>
-                -->
-
+                <!-- pokemon check form END !!! -->
+                <div class="row">
+                    <h5>Note about Online Battle Predict</h5>
+                    <blockquote>
+                        In the online battle predict system, there are only [723] Pokémon avalaible to check battle result after dropping and clearing invalid data to avoid causing unexpected error by random users.
+                        <br><br> According to the <a href='https://pokeapi.co/docs/v2.html' target="_blank">Pokémon official data site</a>, [964] Pokémon are released in total.
+                    </blockquote>
+                </div>
+                <!-- note about the application END !!! -->
             </div>
         </div>
     </section>
