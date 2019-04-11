@@ -3858,20 +3858,36 @@ body.is-loading #banner:before {
 }
 
 .input-filter {
-    margin-bottom: .7em;
+    margin-bottom: .1em;
+}
+
+table td {
+    vertical-align: middle;
 }
 
 .easy-pokemon {
     display: none;
+    overflow: auto;
+    height: 200px;
+    position: absolute;
+    width: 90%;
+    z-index: 99999;
+}
+
+.easy-pokemon tbody tr:nth-child(2n+1) {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.easy-pokemon tbody tr {
+    border-color: rgba(0, 0, 0, 0.75);
 }
 
 .easy-pokemon td {
-    vertical-align: middle;
     padding: 0;
 }
 
 .easy-pokemon td.td-name {
-    padding-left: .7em;
+    padding-left: 1.2em;
 }
 
 .focus {
@@ -3884,7 +3900,12 @@ body.is-loading #banner:before {
 
 .predict-result {
     display: flex;
-    align-items: stretch;
+    justify-content: space-around;
+    margin-top: 1.2em;
+}
+
+.predict-result a {
+    padding: 0 .7em 0 .7em;
 }
 
 #play-again {

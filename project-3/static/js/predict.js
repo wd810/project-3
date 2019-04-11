@@ -63,16 +63,16 @@ app.controller('myCtrl', function($scope, $http) {
                     $http.post('/pokemon-go', Indata).then(function(response) {
                         data = response.data;
                         console.log(data);
-                        var lose_rate = Math.round((100 - data.win_rate) * 100) / 100;
+                        //var lose_rate = Math.round((100 - data.win_rate) * 100) / 100;
 
                         if ($scope.pok_1_s.id == data.win_predict) {
                             $('#pok_1_box').addClass('winner-box');
                             $scope.pok_1_s.win_rate = 'Win Rate: ' + data.win_rate + '%';
-                            $scope.pok_2_s.win_rate = 'Win Rate: ' + lose_rate + '%';
+                            //$scope.pok_2_s.win_rate = 'Win Rate: ' + lose_rate + '%';
                         } else {
                             $('#pok_2_box').addClass('winner-box');
                             $scope.pok_2_s.win_rate = 'Win Rate: ' + data.win_rate + '%';
-                            $scope.pok_1_s.win_rate = 'Win Rate: ' + lose_rate + '%';
+                            //$scope.pok_1_s.win_rate = 'Win Rate: ' + lose_rate + '%';
                         }
                         //$scope.win_pok = data.win_predict;
                         $('#play-again').show();
@@ -91,6 +91,7 @@ app.controller('myCtrl', function($scope, $http) {
 
             // play again btn click: intial page 
             $scope.initial = function() {
+                $scope.data = response.data;
                 $scope.pok_1_s = {
                     'name': 'Pokémon 1',
                     'id': 0,
@@ -112,6 +113,7 @@ app.controller('myCtrl', function($scope, $http) {
                 $('#play-again').hide();
                 $scope.pok_1_not_select = '';
                 $scope.pok_2_not_select = '';
+                $('.pokemon-box').removeClass('winner-box');
             }
 
         });
