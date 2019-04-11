@@ -22,7 +22,7 @@ db.init_app(app)
 # threshhold of battle time in history
 enough_history = 10
 # win rate general depends on Linear Regression Model R2 score
-win_rate_with_linear = 0.94
+win_rate_with_linear = 94
 error_rate_mean = 4.07
 ''' 
     const data statement END !!!
@@ -59,7 +59,7 @@ def check_win_battle(full, pok_id_1, pok_id_2):
     return {'win_predict': win_pre, 'win_rate': win_rate_predict}
 
 ''' ultimate winner predict function '''
-def predict_winner(bat_history, combats_history_df, full, pok_id_1, pok_id_2):
+def predict_winner(bat_history, combats_history_df, full, win_rate_check, pok_id_1, pok_id_2):
     pok_1 = np.int(pok_id_1)
     pok_2 = np.int(pok_id_2)
     # set up battle instance
@@ -178,7 +178,7 @@ def pokemon_go():
     win_rate_check = win_rate
 
     #result = post
-    result = predict_winner(bat_history, combats_history_df, full, pok1, pok2)
+    result = predict_winner(bat_history, combats_history_df, full, win_rate_check, pok1, pok2)
     return jsonify(result)
 
 if(__name__ == '__main__'):

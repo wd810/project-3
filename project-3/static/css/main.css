@@ -3857,12 +3857,12 @@ body.is-loading #banner:before {
     margin-right: .2em;
 }
 
-.easy-pokemon {
-    display: none;
+.input-filter {
+    margin-bottom: .7em;
 }
 
-.focus {
-    display: block;
+.easy-pokemon {
+    display: none;
 }
 
 .easy-pokemon td {
@@ -3870,7 +3870,24 @@ body.is-loading #banner:before {
     padding: 0;
 }
 
+.easy-pokemon td.td-name {
+    padding-left: .7em;
+}
+
+.focus {
+    display: block;
+}
+
 .toggle-list {
+    display: none;
+}
+
+.predict-result {
+    display: flex;
+    align-items: stretch;
+}
+
+#play-again {
     display: none;
 }
 
