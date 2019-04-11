@@ -44,6 +44,7 @@
                     <h2>Pokémon Battle Predict</h2>
                     <p>Choose 2 Pokémon from Database to check the battle win rate prediction</p>
                 </header>
+
                 <div class="row uniform">
                     <div class="col-sm-6 6u 12u$(xsmall)">
                         <div id='pok_1_box' class='pokemon-box'>
@@ -60,15 +61,10 @@
                             </div>
                         </div>
 
-                        <div class="select-box-1">
+                        <div class="select-box">
+                            <span ng-bind='pok_1_not_select'></span>
                             <input ng-model="pok_filter_1.name" class="input-filter" type="text" value="" placeholder="Select Pokémon One" />
                             <table class="easy-pokemon" id='pok_list_1'>
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Sprite</th>
-                                    </tr>
-                                </thead>
                                 <tbody></tbody>
                             </table>
                         </div>
@@ -89,14 +85,9 @@
                             </div>
                         </div>
                         <div class="select-box">
+                            <span ng-bind='pok_2_not_select'></span>
                             <input ng-model="pok_filter_2.name" class="input-filter" type="text" value="" placeholder="Select Pokémon Two" />
                             <table class="easy-pokemon" id='pok_list_2'>
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Sprite</th>
-                                    </tr>
-                                </thead>
                                 <tbody></tbody>
                             </table>
                         </div>
@@ -104,14 +95,18 @@
                     </div>
                 </div>
 
-                <dic class="row" id='predict-result'>
-                    <button class="button special" id='submit_pok'>Pokémon Go !</button>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <label>Predict Winner:</label>
-                            <h5 ng-bind='win_pok'></h5>
-                        </div>
+                <dic class="row predict-result">
+                    <div>
+                        <a id='submit_pok'>
+                            <button class="button special">Pokémon Go !</button>
+                        </a>
                     </div>
+                    <div>
+                        <a id='play-again' ng-click='initial()'>
+                            <button class="button special">Play Again !</button>
+                        </a>
+                    </div>
+
                 </dic>
 
                 <!-- input box END !!-->
