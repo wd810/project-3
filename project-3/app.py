@@ -83,7 +83,7 @@ def pokemon_go():
     combats_history_df = pd.read_sql_query(history_stmt, db.session.bind)
 
     # battle history check list
-    bat_history = combats_history_df.bat_instance.to_list()
+    bat_history = combats_history_df.bat_instance.tolist()
     # initial win_rate check chart based the history data get
     win_rate = combats_history_df.groupby('battle_time').win_rate.value_counts().to_frame().rename(columns={'win_rate': 'win_num'})
     win_per = [
