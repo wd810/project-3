@@ -26,8 +26,11 @@
     <nav id="menu">
         <ul class="links">
             <li><a href="/">Home</a></li>
+            <li><a href="/predict">Pokémon Battle Prediction</a></li>
             <li><a href="/shape">Pokémon Shape</a></li>
+            <li><a href="/encounter">Pokémon Encounter</a></li>
             <li><a href="/evolution">Pokémon Evolution</a></li>
+            <li><a href="/move">Pokémon Move</a></li>
         </ul>
     </nav>
 
@@ -37,16 +40,16 @@
 			to the full filename of your image. This is used in each section to set
 			the background image.
 		-->
-    <section id="post" ng-controller="myCtrl" class="wrapper bg-img post_section" data-bg="../static/img/pokemon-bg-1.jpg">
+    <section id="post" ng-controller="myCtrl" class="wrapper bg-img post_section" data-bg="../static/img/pokemon-bg-10.jpg">
         <div class="dark">
             <div class="inner">
                 <header>
                     <h2>Pokémon Battle Predict</h2>
                     <p>Choose 2 Pokémon from the dropdown list to check the battle result prediction</p>
-                    <p>Pokémon battle prediction is a data model based on the theory of marchine learning and mathsmatics probability events calculation. After analyzing <strong>[50,000] Pokémon battle instances</strong> of [783] Pokémon in the database,
-                        I have developed this amazing data model to predict battle result between 2 Pokémon, which has reached <strong>nearly [95%] accurate</strong> prediction in average now.</p>
-                    <p>Furthermore, this data model can improve the accuracy of prediction by gaining [battle instances], which means with the increasing of battle instances gaining in the database, the accuracy of battle prediction has the possibility to
-                        <strong>improve from the current [95%] to as close as [100%]</strong> infinitely.</p>
+                    <p>Pokémon battle prediction is a data model based on the theory of marchine learning and mathsmatics probability events calculation. After analyzing <strong>[50,000] Pokémon battle instances of [783] Pokémon</strong> in the database,
+                        I have developed this amazing data model to predict battle result between 2 Pokémon, which has reached <strong>above [90%] accurate</strong> prediction in average now.</p>
+                    <p>Furthermore, this data model can <strong>improve the accuracy of prediction by gaining [battle instances]</strong>, which means with the increasing of battle instances gaining in the database, the accuracy of battle prediction
+                        <strong>has the possibility to improve from the current [90%] to [100%]</strong> infinitely.</p>
                     <p>For more details of data model development and error testing precess, please visit author's <a href="https://github.com/wangdianyh/project-3/blob/master/project-3/data/combats.ipynb" target="_blank">raw ipynb file</a> on Github.</p>
                 </header>
 
@@ -54,7 +57,7 @@
                     <div class="col-sm-6 6u 12u$(xsmall)">
                         <div id='pok_1_box' class='pokemon-box'>
                             <div class="pok-img-box">
-                                <img src='' id='pok_1_img' />
+                                <img src='../static/img/ball.png' width="96" height="96" id='pok_1_img' />
                             </div>
                             <div>
                                 <h4 ng-bind='pok_1_s.name'></h4>
@@ -69,16 +72,21 @@
                         <div class="select-box">
                             <span ng-bind='pok_1_not_select'></span>
                             <input ng-model="pok_filter_1.name" class="input-filter" type="text" value="" placeholder="Select Pokémon One" />
-                            <table class="easy-pokemon" id='pok_list_1'>
+                            <!--
+                                <table class="easy-pokemon" id='pok_list_1'>
                                 <tbody></tbody>
                             </table>
+                            -->
+                            <div class="pok_dropdown" id='pok_list_1'>
+                                <ul></ul>
+                            </div>
                         </div>
 
                     </div>
                     <div class="col-sm-6 6u 12u$(xsmall)">
                         <div id='pok_2_box' class='pokemon-box'>
                             <div class="pok-img-box">
-                                <img src='' id='pok_2_img' />
+                                <img src='../static/img/ball.png' width="96" height="96" id='pok_2_img' />
                             </div>
                             <div>
                                 <h4 ng-bind='pok_2_s.name'></h4>
@@ -92,9 +100,9 @@
                         <div class="select-box">
                             <span ng-bind='pok_2_not_select'></span>
                             <input ng-model="pok_filter_2.name" class="input-filter" type="text" value="" placeholder="Select Pokémon Two" />
-                            <table class="easy-pokemon" id='pok_list_2'>
-                                <tbody></tbody>
-                            </table>
+                            <div class="pok_dropdown" id='pok_list_2'>
+                                <ul></ul>
+                            </div>
                         </div>
 
                     </div>

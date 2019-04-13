@@ -78,7 +78,6 @@ def pokemon_go():
 
     full_stmt = db.session.query(PokemonBattle).statement
     full = pd.read_sql_query(full_stmt, db.session.bind)
-
     history_stmt = db.session.query(CombatsHistory).statement
     combats_history_df = pd.read_sql_query(history_stmt, db.session.bind)
 
