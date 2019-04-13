@@ -37,7 +37,7 @@ def check_win_battle(full, pok_id_1, pok_id_2):
         exp_dif = np.abs(exp_rate_1 - exp_rate_2)
         rate_dif = np.abs(exp_dif - win_rate_dif)
         if exp_dif >= win_rate_dif:
-            win_rate_predict = np.round(win_rate_with_linear * (win_rate_dif - rate_dif) / 100, decimals=2)
+            win_rate_predict = np.round(win_rate_with_linear * win_rate_dif / 100, decimals=2)
         else:
             win_rate_predict = np.round(win_rate_with_linear * (win_rate_dif + rate_dif) / 100, decimals=2)
     else:
