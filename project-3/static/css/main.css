@@ -3872,6 +3872,7 @@ table td {
     position: absolute;
     background-color: rgba(0, 0, 0, .7);
     width: 95%;
+    z-index: 9999;
 }
 
 .pok_dropdown ul {
