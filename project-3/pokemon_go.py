@@ -5,14 +5,10 @@ import numpy as np
     const data statement 
 '''
 # threshhold of battle time in history
-enough_history = 10
+enough_history = 100
 # win rate general depends on Linear Regression Model R2 score
-win_rate_with_linear = 94
-error_rate_mean = 4.07
-''' 
-    const data statement END !!!
-'''
-
+win_rate_with_linear = 88
+error_rate_mean = 15
 ''' 
     const data statement END !!!
 '''
@@ -36,7 +32,14 @@ def check_win_battle(full, pok_id_1, pok_id_2):
     win_rate_dif = np.abs(pok_s_1.win_rate - pok_s_2.win_rate)
     #win_bat_dif = pok_s_1.win_battle - pok_s_2.win_battle
     if win_rate_dif < error_rate_mean:
-        win_rate_predict = np.round(win_rate_with_linear * win_rate_dif / 100, decimals=2)
+        exp_rate_1 = predict_win_rate(pok_s_1.win_battle)
+        exp_rate_2 = predict_win_rate(pok_s_2.win_battle)
+        exp_dif = np.abs(exp_rate_1 - exp_rate_2)
+        rate_dif = np.abs(exp_dif - win_rate_dif)
+        if exp_dif >= win_rate_dif:
+            win_rate_predict = np.round(win_rate_with_linear * (win_rate_dif - rate_dif) / 100, decimals=2)
+        else:
+            win_rate_predict = np.round(win_rate_with_linear * (win_rate_dif + rate_dif) / 100, decimals=2)
     else:
         win_rate_predict = win_rate_with_linear
     

@@ -3853,7 +3853,7 @@ body.is-loading #banner:before {
     width: 96px;
 }
 
-.pokemon-box .pok-img-box img {
+.pokemon-box .pok-img-box {
     margin-right: .2em;
 }
 
@@ -3863,6 +3863,36 @@ body.is-loading #banner:before {
 
 table td {
     vertical-align: middle;
+}
+
+.pok_dropdown {
+    display: none;
+    overflow: auto;
+    height: 200px;
+    position: absolute;
+    background-color: rgba(0, 0, 0, .7);
+    width: 95%;
+}
+
+.pok_dropdown ul {
+    width: 50%;
+    float: left;
+    margin: 0;
+    padding: 0em;
+}
+
+.pok_dropdown ul li {
+    list-style: none;
+}
+
+.pok_dropdown ul li div {
+    text-align: center;
+}
+
+.pok_dropdown ul li p.box-name {
+    vertical-align: middle;
+    margin: 0;
+    text-align: center;
 }
 
 .easy-pokemon {
@@ -3901,7 +3931,7 @@ table td {
 .predict-result {
     display: flex;
     justify-content: space-around;
-    margin-top: 1.2em;
+    margin: 1.2em 0 1.2em 0;
 }
 
 .predict-result a {

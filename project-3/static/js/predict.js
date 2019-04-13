@@ -3,14 +3,14 @@ var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope, $http) {
     // load available pokemon for battle prediction
     $scope.pok_1_s = {
-        'name': 'Pokémon 1',
+        'name': 'choose Pokémon 1',
         'id': 0,
         'type1': '',
         'type2': '',
         'win_rate': ''
     };
     $scope.pok_2_s = {
-        'name': 'Pokémon 2',
+        'name': 'choose Pokémon 2',
         'id': 0,
         'type1': '',
         'type2': '',
@@ -35,7 +35,7 @@ app.controller('myCtrl', function($scope, $http) {
                 $scope.data = $scope.data.filter(function(data) {
                     return data.pokemon_id != $scope.pok_1_s.id && data.pokemon_id != $scope.pok_2_s.id;
                 });
-                $('.easy-pokemon').removeClass('focus');
+                $('.pok_dropdown').removeClass('focus');
             }
 
             // select pokemon two
@@ -50,7 +50,7 @@ app.controller('myCtrl', function($scope, $http) {
                 $scope.data = $scope.data.filter(function(data) {
                     return data.pokemon_id != $scope.pok_1_s.id && data.pokemon_id != $scope.pok_2_s.id;
                 });
-                $('.easy-pokemon').removeClass('focus');
+                $('.pok_dropdown').removeClass('focus');
             }
 
             // submite pokemon data to get battle predition data
@@ -103,8 +103,8 @@ app.controller('myCtrl', function($scope, $http) {
                     'type2': '',
                     'win_rate': ''
                 };
-                $('#pok_1_img').attr('src', '');
-                $('#pok_2_img').attr('src', '');
+                $('#pok_1_img').attr('src', '../static/img/ball.png');
+                $('#pok_2_img').attr('src', '../static/img/ball.png');
                 $('#submit_pok').show();
                 $('.select-box').show();
                 $('#play-again').hide();
@@ -117,15 +117,16 @@ app.controller('myCtrl', function($scope, $http) {
 
 });
 //initial pokemon filter 1
-var pok_list_1 = d3.select('#pok_list_1 tbody').attr('ng-repeat', 'x in data | filter: pok_filter_1');
-var tr_pok_list_1 = pok_list_1.append('tr').attr('ng-click', 'select_pok_1(x)');
-var name = tr_pok_list_1.append('td').attr('class', 'td-name').text('{{x.name}}');
-var img = tr_pok_list_1.append('td').append('img').attr('src', '{{x.sprite}}');
+var pok_list_1 = d3.select('#pok_list_1 ul').attr('ng-repeat', 'x in data | filter: pok_filter_1');
+var tr_pok_list_1 = pok_list_1.append('li').attr('ng-click', 'select_pok_1(x)');
+var img = tr_pok_list_1.append('div').append('img').attr('src', '{{x.sprite}}');
+var name = tr_pok_list_1.append('p').attr('class', 'box-name').text('{{x.name}}');
+
 //initial pokemon filter 2
-var pok_list_2 = d3.select('#pok_list_2 tbody').attr('ng-repeat', 'x in data | filter: pok_filter_2');
-var tr_pok_list_2 = pok_list_2.append('tr').attr('ng-click', 'select_pok_2(x)');
-var name = tr_pok_list_2.append('td').attr('class', 'td-name').text('{{x.name}}');
-var img = tr_pok_list_2.append('td').append('img').attr('src', '{{x.sprite}}');
+var pok_list_2 = d3.select('#pok_list_2 ul').attr('ng-repeat', 'x in data | filter: pok_filter_2');
+var tr_pok_list_2 = pok_list_2.append('li').attr('ng-click', 'select_pok_2(x)');
+var img = tr_pok_list_2.append('div').append('img').attr('src', '{{x.sprite}}');
+var name = tr_pok_list_2.append('p').attr('class', 'box-name').text('{{x.name}}');
 // pokemon dropdown select list hide() and show()
 $('.input-filter').on('focus', function(e) {
     $(this).next().addClass('focus');

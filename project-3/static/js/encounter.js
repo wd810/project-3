@@ -155,8 +155,10 @@ function numberGraph() {
                 var d0 = data[i - 1];
                 var d = d1.num_method_to_catch - mouseScale > mouseScale - d0.num_method_to_catch ? d0 : d1;
                 if (d) {
-                    focus.attr("transform", "translate(" + xScale(d.num_method_to_catch) + ",0)")
-                        .style('display', 'block');
+                    focus.transition()
+                        .duration(40)
+                        .style('display', 'block')
+                        .attr("transform", "translate(" + xScale(d.num_method_to_catch) + ",0)");
                     focus.selectAll('text#encounter')
                         .attr("transform", "translate(4," + yScale(d.num_pokemon_encounter) + ")")
                         .text(function() { return d.num_pokemon_encounter + '%'; });
