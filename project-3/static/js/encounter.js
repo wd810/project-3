@@ -1,23 +1,11 @@
-$(document).ready(function() {
-    d3.select(window).on("resize", handleResize);
-    numberGraph();
-});
-// make svg graph resposive
-function handleResize() {
-    var svgArea = d3.select("svg");
-    // If there is already an svg container on the page, remove it and reload the chart
-    if (!svgArea.empty()) {
-        svgArea.remove();
-        numberGraph();
-    }
-}
+d3.select(window).on("resize", handleResize);
+numberGraph();
 
 function numberGraph() {
     d3.json('/data/AreaNumMethods', function(error, data) {
         if (error) {
             console.warn(error);
         }
-
         var pie_radius = Math.min(chartWidth, chartHeight) / 2 - margin.top;
         // bind data to color
         color.domain(data);

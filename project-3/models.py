@@ -88,15 +88,6 @@ class MoveDamageClass(BaseModel, db.Model):
     power = db.Column(db.Float)
     per = db.Column(db.Float)
 
-class MoveCategory(BaseModel, db.Model):
-    __tablename__ = 'move_category'
-    category = db.Column(db.String(120), primary_key=True)
-    count = db.Column(db.Integer)
-    accuracy = db.Column(db.Float)
-    power = db.Column(db.Float)
-    acc_power = db.Column(db.Float)
-    per = db.Column(db.Float)
-
 class CombatsHistory(BaseModel, db.Model):
     __tablename__ = 'combats_history'
     bat_instance = db.Column(db.String(120), primary_key=True)

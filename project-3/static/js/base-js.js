@@ -1,5 +1,6 @@
-var svgWidth = 0.8 * window.innerWidth;
-var svgHeight = 0.7 * window.innerHeight;
+var innerWidth = $('.inner').width();
+var svgWidth = innerWidth;
+var svgHeight = 0.5 * svgWidth;
 var margin = {
     top: 10,
     right: 50,
@@ -17,9 +18,19 @@ var pie_radius = Math.min(chartWidth, chartHeight) / 2 - margin.top;
 // create color scale for global use
 var color = d3.scaleOrdinal()
     .range(d3.schemeCategory20);
+
+// make svg graph resposive
+function handleResize() {
+    var svgArea = d3.selectAll('svg')
+        // If there is already an svg container on the page, remove it and reload the chart
+
+    if (!svgArea.empty()) {
+        svgArea.remove();
+        numberGraph()
+    }
+}
 // graph initialize functions
 function initialSvg(id) {
-    //create number bar graph
     var graph = d3.select(id);
 
     var svg = graph.append("svg")
