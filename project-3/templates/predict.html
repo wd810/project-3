@@ -50,7 +50,8 @@
                         I have developed this amazing data model to predict battle result between 2 Pokémon, which has reached <strong>above [90%] accurate</strong> prediction in average now.</p>
                     <p>Furthermore, this data model can <strong>improve the accuracy of prediction by gaining [battle instances]</strong>, which means with the increasing of battle instances gaining in the database, the accuracy of battle prediction
                         <strong>has the possibility to improve from the current [90%] to [100%]</strong> infinitely.</p>
-                    <p>For more details of data model development and error testing process, please visit author's <a href="https://github.com/wangdianyh/project-3/blob/master/project-3/data/combats.ipynb" target="_blank">raw ipynb file</a> on Github.</p>
+                    <p>For more <a data-toggle="modal" data-target="#process" href="#">details</a> of data model development and error testing process, please visit author's <a href="https://github.com/wangdianyh/project-3/blob/master/project-3/data/combats.ipynb"
+                            target="_blank">raw ipynb file</a> on Github.</p>
                 </header>
 
                 <div class="row uniform">
@@ -145,8 +146,129 @@
         </div>
     </footer>
 
+    <!-- Modal -->
+    <div class="modal fade bd-example-modal-xl" id="process" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>Analyze Process</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row" style="text-align: center;">
+                        <h5>Check if battle has history instance record</h5>
+                    </div>
+                    <div class="row">
+                        <ul class="col-md-6">
+                            <li>
+                                <h5>Battle has no instance in battle history database</h5>
+                            </li>
+                            <li>
+                                <p>
+                                    Pokémon's number of win battle has linear regression relationship with win rate. In general, if one pokemon has won more battles, it will have a higher win rate.
+                                </p>
+                            </li>
+                            <li>
+                                <img src="../static/img/linear.png" />
+                            </li>
+                            <li>
+                                <p>model: <strong>win_rate = 0.94win_bat + 2.25</strong></p>
+                                <p>model score: 0.94 out of 1</p>
+                                <p>wrong prediction may not be accurate when 2 pokemon's battle win number and win rate are getting close enough to a certain distance.</p>
+                                <p>win rate error mean value: 4.07</p>
+                            </li>
+                        </ul>
+                        <ul class="col-md-6">
+                            <li>
+                                <h5>Battle has instance</h5>
+                            </li>
+                            <li>
+                                <p>
+                                    If a battle have instance in history database, this problem can transfer to a mathsmatics probability events. Base on 2 Pokémon battle history result to predict the winner and win rate of next battle between them.
+                                </p>
+                            </li>
+                            <li>
+                                <table>
+                                    <tr>
+                                        <th>battle time</th>
+                                        <th>win rate</th>
+                                        <th>battle instance</th>
+                                        <th>percentage</th>
+                                    </tr>
+
+                                    <tr>
+                                        <td>1 battle</td>
+                                        <td>100%</td>
+                                        <td>42653</td>
+                                        <td>100%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2 battle</td>
+                                        <td>100%</td>
+                                        <td>3280</td>
+                                        <td>97.04%</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>50%</td>
+                                        <td>100</td>
+                                        <td>2.96%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3 battle</td>
+                                        <td>100%</td>
+                                        <td>178</td>
+                                        <td>96.22%</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>66.67%</td>
+                                        <td>7</td>
+                                        <td>3.78%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4 battle</td>
+                                        <td>100%</td>
+                                        <td>5</td>
+                                        <td>62.5%</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>75%</td>
+                                        <td>3</td>
+                                        <td>37.5%</td>
+                                    </tr>
+                                </table>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="row">
+                        <ul class="col-md-6">
+                            <li>
+                                <h5>Prediction Error Rate</h5>
+                                <p>12.36%(1091 error out of 8826 battle predictions)</p>
+                            </li>
+                        </ul>
+                        <ul class="col-md-6">
+                            <li>
+                                <h5>Prediction Error Rate</h5>
+                                <p>2.36%(27 error out of 1174 battle predictions)</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- body end -->
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
     <script src="{{ url_for( 'static', filename='js/jquery.min.js' ) }}"></script>
     <script src="{{ url_for( 'static', filename='js/jquery.scrolly.min.js' ) }}"></script>
