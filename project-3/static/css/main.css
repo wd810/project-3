@@ -3270,7 +3270,7 @@ body.subpage {
     text-align: right;
     top: 1em;
     width: 100%;
-    z-index: 10001;
+    z-index: 999;
     padding: 0 1.5em;
 }
 
@@ -3872,7 +3872,7 @@ table td {
     position: absolute;
     background-color: rgba(0, 0, 0, .7);
     width: 95%;
-    z-index: 9999;
+    z-index: 998;
 }
 
 .pok_dropdown ul {
@@ -3941,6 +3941,22 @@ table td {
 
 #play-again {
     display: none;
+}
+
+.modal-content h5,
+p,
+li {
+    color: black;
+    list-style: none;
+}
+
+.modal-content table th {
+    color: black;
+}
+
+.modal-content p {
+    margin: 0 0 .3em 0;
+    line-height: 1.1em;
 }
 
 @-moz-keyframes inner {
