@@ -3943,9 +3943,19 @@ table td {
     display: none;
 }
 
-.modal-content h5,
-p,
-li {
+.modal-content h5 {
+    color: black;
+}
+
+.modal-content p {
+    color: black;
+}
+
+.modal-content strong {
+    color: black;
+}
+
+.modal-content li {
     color: black;
     list-style: none;
 }
