@@ -4172,6 +4172,12 @@ table td {
             bottom: 1.5em;
         }
     }
+    .box-width{
+        width: 85%;
+    }
+    .box-width #linear-pic{
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 736px) {
