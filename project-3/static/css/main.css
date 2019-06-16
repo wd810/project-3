@@ -3780,6 +3780,10 @@ body.is-loading #banner:before {
     text-align: right;
 }
 
+.box-width #linear-pic {
+    width: 100%;
+}
+
 @media screen and (max-width: 736px) {
     .post_section {
         background-size: cover;
@@ -4192,9 +4196,6 @@ table td {
     }
     .box-width .close {
         background-color: grey;
-    }
-    .box-width #linear-pic {
-        width: 100%;
     }
 }
 
