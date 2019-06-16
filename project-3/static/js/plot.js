@@ -80,7 +80,7 @@ function numberGraph() {
             });
             // update discription text
             $('.type-disc p').hide(100);
-            $(`p#${value}`).show(600);
+            $(`p#${value}`).show(100);
         });
     });
     // pokemon type END !
