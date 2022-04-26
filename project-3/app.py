@@ -17,9 +17,10 @@ from .pokemon_go import *
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://vuncmjlkhnmans:610ac2b5df61bcd4aed66992647b94f98b0fbb4b677f4f721f09b244482d718a@ec2-54-204-41-109.compute-1.amazonaws.com/d8vgn7vtrufr72'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://vsivctjqbfloss:a480a5974c31aad03363de7e8a3584f0c7393199684e6c492bd3bcbc1672f3a0@ec2-18-214-189-70.compute-1.amazonaws.com:5432/ddthvatqq2dsj1'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # silence the deprecation warning
-db.init_app(app)
+# db.init_app(app)
+db = SQLAlchemy(app)
 
 def str_to_class(classname):
     return getattr(sys.modules[__name__], classname)
