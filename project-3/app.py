@@ -12,8 +12,8 @@ import sys
 
 from .models import *
 from .pokemon_go import *
-#from models import *
-#from pokemon_go import *
+# from models import *
+# from pokemon_go import *
 
 app = Flask(__name__)
 
