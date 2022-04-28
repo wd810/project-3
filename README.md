@@ -1,4 +1,4 @@
-watch data report lively: https://project3staging.herokuapp.com/
+watch data report lively: https://pokemon-analysis-go.herokuapp.com/
 
 Pokemon Power Rank & Encounter Possibility 
 
