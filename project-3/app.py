@@ -1,5 +1,4 @@
 from flask import Flask, render_template, jsonify, request
-#from flask_pymongo import PyMongo
 import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
@@ -24,10 +23,12 @@ db = SQLAlchemy(app)
 
 def str_to_class(classname):
     return getattr(sys.modules[__name__], classname)
+
 # homepage
 @app.route('/')
 def index():
     return render_template('index.html')
+
 # postgres data checking page
 @app.route('/data/<item>', methods=['GET'])
 def data(item):
@@ -84,6 +85,7 @@ def pokemon_go():
 
     # battle history check list
     bat_history = combats_history_df.bat_instance.tolist()
+    
     # initial win_rate check chart based the history data get
     win_rate = combats_history_df.groupby('battle_time').win_rate.value_counts().to_frame().rename(columns={'win_rate': 'win_num'})
     win_per = [
